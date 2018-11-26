@@ -31,5 +31,10 @@ namespace TestWPF
             studentListBoxItem.Content = LastNameTextBox.Text + " " + FirstNameTextBox.Text;
             StudentsListBox.Items.Add(studentListBoxItem);
         }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
