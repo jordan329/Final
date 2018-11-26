@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="476.738" Width="900">
+        Title="MainWindow" Height="500" Width="900">
     <Grid>
         <Label Content="Zip Code" HorizontalAlignment="Left" Margin="34,22,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="GPATextBox"  HorizontalAlignment="Left" Height="23" Margin="34,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+        <TextBox x:Name="ZipCodeTextBox"  HorizontalAlignment="Left" Height="23" Margin="34,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
         <Label Content="Pizza PlaceList" HorizontalAlignment="Left" Margin="34,72,0,0" VerticalAlignment="Top"/>
         <ListBox Name="PlacesListBox" HorizontalAlignment="Left" Height="250" Margin="34,97,0,0" VerticalAlignment="Top" Width="300">
         </ListBox>

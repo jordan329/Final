@@ -24,17 +24,13 @@ namespace TestWPF
         {
             InitializeComponent();
         }
-
-        private void AddStudentButton_Click(object sender, RoutedEventArgs e)
-        {
-            ListBoxItem studentListBoxItem = new ListBoxItem();
-            studentListBoxItem.Content = LastNameTextBox.Text + " " + FirstNameTextBox.Text;
-            StudentsListBox.Items.Add(studentListBoxItem);
-        }
-
+        
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
+            ListBoxItem placeListBoxItem = new ListBoxItem();
+            placeListBoxItem.Content = ZipCodeTextBox.Text;
+            PlacesListBox.Items.Add(placeListBoxItem);
         }
     }
 }
