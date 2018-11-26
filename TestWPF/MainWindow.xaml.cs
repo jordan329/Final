@@ -28,9 +28,10 @@ namespace TestWPF
         {
             InitializeComponent();
         }
-        
+       
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
+            Clear();
             JObject response = new JObject(Get("https://xqgy0d8a3l.execute-api.us-east-1.amazonaws.com/Prod/places/" + ZipCodeTextBox.Text));
             IList<JToken> results = response["results"].Children().ToList();
             foreach (JToken result in results)
@@ -46,6 +47,22 @@ namespace TestWPF
                 PlacesListBox.Items.Add(placeListBoxItem);
             }            
         }
+        
+        private void PlacesListBox_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if(PlacesListBox.Items.Count == 0)
+            {
+                return;
+            }
+            var place_id = searchResults.ElementAt(PlacesListBox.SelectedIndex).Place_Id;
+            JObject response = new JObject(Get("https://xqgy0d8a3l.execute-api.us-east-1.amazonaws.com/Prod/details/" + place_id));
+            var name = response["result"]["name"];
+            var phone = response["result"]["international_phone_number"];
+            var address = response["result"]["formatted_address"];
+            NameTextBox.Text = name.ToString();
+            PhoneNumberTextBox.Text = phone.ToString();
+            AddressTextBox.Text = address.ToString();            
+        }
         public JObject Get(string uri)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
@@ -58,22 +75,13 @@ namespace TestWPF
                 return obj;
             }
         }
-
-        private void PlacesListBox_SelectionChanged(object sender, RoutedEventArgs e)
+        private void Clear()
         {
-            var place_id = searchResults.ElementAt(PlacesListBox.SelectedIndex).Place_Id;
-            JObject response = new JObject(Get("https://xqgy0d8a3l.execute-api.us-east-1.amazonaws.com/Prod/details/" + place_id));
-            var name = response["result"]["name"];
-            var phone = response["result"]["international_phone_number"];
-            var address = response["result"]["formatted_address"];
-            NameTextBox.Text = name.ToString();
-            PhoneNumberTextBox.Text = phone.ToString();
-            AddressTextBox.Text = address.ToString();            
-        }
-
-        private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            PlacesListBox.Items.Clear();
+            searchResults.Clear();
+            NameTextBox.Text = "";
+            AddressTextBox.Text = "";
+            PhoneNumberTextBox.Text = "";
         }
     }
 }
