@@ -19,9 +19,6 @@ using Newtonsoft.Json.Linq;
 
 namespace TestWPF
 {
-    /// <summary>
-    /// MainWindow.xaml 
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -31,10 +28,8 @@ namespace TestWPF
         
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-
-            JObject x = new JObject(Get("https://xqgy0d8a3l.execute-api.us-east-1.amazonaws.com/Prod/places/" + ZipCodeTextBox.Text));
-            IList<JToken> results = x["results"].Children().ToList();
-
+            JObject response = new JObject(Get("https://xqgy0d8a3l.execute-api.us-east-1.amazonaws.com/Prod/places/" + ZipCodeTextBox.Text));
+            IList<JToken> results = response["results"].Children().ToList();
             IList<Place> searchResults = new List<Place>();
             foreach (JToken result in results)
             {
@@ -42,28 +37,23 @@ namespace TestWPF
                 Place searchResult = result.ToObject<Place>();
                 searchResults.Add(searchResult);
             }
-
-            Console.WriteLine(searchResults);
             foreach(Place searchResult in searchResults)
             {
                 ListBoxItem placeListBoxItem = new ListBoxItem();
                 placeListBoxItem.Content = searchResult.Name;
                 PlacesListBox.Items.Add(placeListBoxItem);
-            }
-            
+            }            
         }
         public JObject Get(string uri)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
             {
-                JObject o = JObject.Parse(reader.ReadToEnd());
-                return o;
-
+                JObject obj = JObject.Parse(reader.ReadToEnd());
+                return obj;
             }
         }
     }
