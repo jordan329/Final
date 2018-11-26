@@ -13,12 +13,12 @@
         <ListBox Name="PlacesListBox" HorizontalAlignment="Left" Height="250" Margin="34,97,0,0" VerticalAlignment="Top" Width="300" SelectionChanged="PlacesListBox_SelectionChanged">
         </ListBox>
         <Button Name="SearchButton" Content="Search Zip" HorizontalAlignment="Left" Margin="34,400,0,0" VerticalAlignment="Top" Width="300" Height="35" Click="SearchButton_Click"/>
-        <TextBox x:Name="NameTextBox"  HorizontalAlignment="Left" Height="23" Margin="607,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="500,89,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="AddressTextBox"  HorizontalAlignment="Left" Height="23" Margin="607,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Address" HorizontalAlignment="Left" Margin="500,137,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="PhoneNumberTextBox"  HorizontalAlignment="Left" Height="23" Margin="607,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="500,189,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="NameTextBox"  HorizontalAlignment="Left" Height="46" Margin="507,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" TextChanged="NameTextBox_TextChanged"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="400,89,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="AddressTextBox"  HorizontalAlignment="Left" Height="46" Margin="507,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
+        <Label Content="Address" HorizontalAlignment="Left" Margin="400,137,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PhoneNumberTextBox"  HorizontalAlignment="Left" Height="23" Margin="507,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
+        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="400,189,0,0" VerticalAlignment="Top"/>
         
 
 

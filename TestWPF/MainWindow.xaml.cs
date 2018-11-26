@@ -66,18 +66,14 @@ namespace TestWPF
             var name = response["result"]["name"];
             var phone = response["result"]["international_phone_number"];
             var address = response["result"]["formatted_address"];
-            /*foreach (JToken result in results)
-            {
-                // JToken.ToObject is a helper method that uses JsonSerializer internally
-                Details searchResult = result.ToObject<Details>();
-                detailResults.Add(searchResult);
-            }
-            foreach (Details detailResult in detailResults)
-            {*/
-                NameTextBox.Text = name.ToString();
-                PhoneNumberTextBox.Text = phone.ToString();
-                AddressTextBox.Text = address.ToString();
-            //}
+            NameTextBox.Text = name.ToString();
+            PhoneNumberTextBox.Text = phone.ToString();
+            AddressTextBox.Text = address.ToString();            
+        }
+
+        private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
