@@ -21,6 +21,9 @@ namespace TestWPF
 {
     public partial class MainWindow : Window
     {
+        IList<Place> searchResults = new List<Place>();
+        IList<Details> detailResults = new List<Details>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,7 +33,6 @@ namespace TestWPF
         {
             JObject response = new JObject(Get("https://xqgy0d8a3l.execute-api.us-east-1.amazonaws.com/Prod/places/" + ZipCodeTextBox.Text));
             IList<JToken> results = response["results"].Children().ToList();
-            IList<Place> searchResults = new List<Place>();
             foreach (JToken result in results)
             {
                 // JToken.ToObject is a helper method that uses JsonSerializer internally
@@ -55,6 +57,27 @@ namespace TestWPF
                 JObject obj = JObject.Parse(reader.ReadToEnd());
                 return obj;
             }
+        }
+
+        private void PlacesListBox_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            var place_id = searchResults.ElementAt(PlacesListBox.SelectedIndex).Place_Id;
+            JObject response = new JObject(Get("https://xqgy0d8a3l.execute-api.us-east-1.amazonaws.com/Prod/details/" + place_id));
+            var name = response["result"]["name"];
+            var phone = response["result"]["international_phone_number"];
+            var address = response["result"]["formatted_address"];
+            /*foreach (JToken result in results)
+            {
+                // JToken.ToObject is a helper method that uses JsonSerializer internally
+                Details searchResult = result.ToObject<Details>();
+                detailResults.Add(searchResult);
+            }
+            foreach (Details detailResult in detailResults)
+            {*/
+                NameTextBox.Text = name.ToString();
+                PhoneNumberTextBox.Text = phone.ToString();
+                AddressTextBox.Text = address.ToString();
+            //}
         }
     }
 }
