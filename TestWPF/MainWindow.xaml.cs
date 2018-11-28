@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,7 +24,7 @@ namespace TestWPF
     {
         IList<Place> searchResults = new List<Place>();
         IList<Details> detailResults = new List<Details>();
-
+        string currentFilePath = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -83,7 +84,7 @@ namespace TestWPF
             if(hours != null) {
                 hours.ForEach((hour) => {
                     Console.WriteLine(hour);
-                    HoursTextBox.AppendText(hour + "\n");
+                    HoursTextBox.AppendText(hour + Environment.NewLine);
                 });
             }
         }
@@ -109,6 +110,40 @@ namespace TestWPF
             RatingTextBox.Text = "";
             HoursTextBox.Text = "";
             PriceTextBox.Text = "";
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e) {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            // http://msdn.microsoft.com/en-us/library/system.io.path.getdirectoryname.aspx
+
+            if (currentFilePath != "") {
+                saveFileDialog.FileName = System.IO.Path.GetFileName(currentFilePath);
+                saveFileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(currentFilePath);
+            }
+            saveFileDialog.DefaultExt = ".txt"; // Default file extension
+            saveFileDialog.Filter = "Text Documents (.txt)|*.txt"; // Filter files by extension
+            // Show save file dialog box
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                saveDocument(saveFileDialog.FileName);
+            }
+        }
+        private void saveDocument(String filePath) {            
+                TextWriter txt = new StreamWriter(filePath);
+                try {
+                    txt.Write(
+                        "Name: " + NameTextBox.Text + Environment.NewLine +
+                        "Phone: " + PhoneNumberTextBox.Text + Environment.NewLine +
+                        "Address: " + AddressTextBox.Text + Environment.NewLine +
+                        "Price: " + PriceTextBox.Text + Environment.NewLine +
+                        "Rating: " + RatingTextBox.Text + Environment.NewLine + Environment.NewLine +
+                        "Hours: " + Environment.NewLine + HoursTextBox.Text + Environment.NewLine
+                        );
+                }
+                catch {
+                    System.Windows.MessageBox.Show("An error occured");
+                }
+                txt.Close();           
         }
     }
 }
