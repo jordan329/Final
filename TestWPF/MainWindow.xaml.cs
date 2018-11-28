@@ -59,9 +59,33 @@ namespace TestWPF
             var name = response["result"]["name"];
             var phone = response["result"]["international_phone_number"];
             var address = response["result"]["formatted_address"];
-            NameTextBox.Text = name.ToString();
-            PhoneNumberTextBox.Text = phone.ToString();
-            AddressTextBox.Text = address.ToString();            
+            var price = response["result"]["price_level"];
+            var rating = response["result"]["rating"];
+
+            if (name != null) {
+                NameTextBox.Text = name.ToString();
+            }
+            if (phone != null) {
+                PhoneNumberTextBox.Text = phone.ToString();
+            }
+            if (address != null) {
+                AddressTextBox.Text = address.ToString();
+            }
+            if (price != null) {
+                PriceTextBox.Text = price.ToString();
+            }
+            if(rating != null) {
+                RatingTextBox.Text = rating.ToString();
+            }
+            var hours = response["result"]["opening_hours"]["weekday_text"].Children().ToList();
+            HoursTextBox.Text = "";
+                
+            if(hours != null) {
+                hours.ForEach((hour) => {
+                    Console.WriteLine(hour);
+                    HoursTextBox.AppendText(hour + "\n");
+                });
+            }
         }
         public JObject Get(string uri)
         {
@@ -82,6 +106,9 @@ namespace TestWPF
             NameTextBox.Text = "";
             AddressTextBox.Text = "";
             PhoneNumberTextBox.Text = "";
+            RatingTextBox.Text = "";
+            HoursTextBox.Text = "";
+            PriceTextBox.Text = "";
         }
     }
 }

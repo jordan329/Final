@@ -13,14 +13,21 @@
         <ListBox Name="PlacesListBox" HorizontalAlignment="Left" Height="250" Margin="34,97,0,0" VerticalAlignment="Top" Width="300" SelectionChanged="PlacesListBox_SelectionChanged">
         </ListBox>
         <Button Name="SearchButton" Content="Search Zip" HorizontalAlignment="Left" Margin="34,400,0,0" VerticalAlignment="Top" Width="300" Height="35" Click="SearchButton_Click"/>
-        <TextBox x:Name="NameTextBox"  HorizontalAlignment="Left" Height="46" Margin="507,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" IsEnabled="False"/>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="400,89,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="AddressTextBox"  HorizontalAlignment="Left" Height="46" Margin="507,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" IsEnabled="False"/>
-        <Label Content="Address" HorizontalAlignment="Left" Margin="400,137,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="PhoneNumberTextBox"  HorizontalAlignment="Left" Height="23" Margin="507,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" IsEnabled="False"/>
-        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="400,189,0,0" VerticalAlignment="Top"/>
         
+        <TextBox x:Name="NameTextBox"  HorizontalAlignment="Left" Height="46" Margin="507,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" IsEnabled="False"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="400,47,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="AddressTextBox"  HorizontalAlignment="Left" Height="46" Margin="507,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" IsEnabled="False"/>
+        <Label Content="Address" HorizontalAlignment="Left" Margin="400,100,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PhoneNumberTextBox"  HorizontalAlignment="Left" Height="23" Margin="507,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" IsEnabled="False"/>
+        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="400,160,0,0" VerticalAlignment="Top"/>
 
+        <TextBox x:Name="PriceTextBox"  HorizontalAlignment="Left" Height="23" Margin="507,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" IsEnabled="False"/>
+        <Label Content="Price out of 5" HorizontalAlignment="Left" Margin="400,190,0,0" VerticalAlignment="Top"/>
 
+        <TextBox x:Name="RatingTextBox"  HorizontalAlignment="Left" Height="23" Margin="507,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" IsEnabled="False"/>
+        <Label Content="Rating out of 5" HorizontalAlignment="Left" Margin="400,220,0,0" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="HoursTextBox"  HorizontalAlignment="Left" Height="200" Margin="507,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" IsEnabled="False"/>
+        <Label Content="Weekly Hours" HorizontalAlignment="Left" Margin="400,250,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
