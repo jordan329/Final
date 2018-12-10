@@ -83,7 +83,6 @@ namespace TestWPF
                 
             if(hours != null) {
                 hours.ForEach((hour) => {
-                    Console.WriteLine(hour);
                     HoursTextBox.AppendText(hour + Environment.NewLine);
                 });
             }
