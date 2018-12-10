@@ -1,0 +1,15 @@
+This application is a c# frontend to a dotnet core backend that I wrote (which I will also include).
+this application is for viewing information supplied by google maps about pizza places.
+
+Simply type a zipcode into the textbox labeled "zip code" and press the "search zip" button,
+and the application will make a get request to the API.
+
+The API sends back JSON which is used to populate the "pizza place list" listbox.
+Each item has a name and placeID property.
+
+Once you click on an option more details are displayed based on a second get request sent
+to the API which contains a placeID.
+That placeID is then used to send back more JSON which gives more details
+about the specific pizza place selected in the "pizza place list" listbox.
+
+By clicking "Save Details" you can save the currently selected pizza places details in a .txt file.
